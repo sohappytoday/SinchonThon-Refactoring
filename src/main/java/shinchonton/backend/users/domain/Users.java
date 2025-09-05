@@ -25,5 +25,8 @@ public abstract class Users {
     @Column(nullable = false)
     private String nickname;
 
+    public abstract UserType getUserType();
+
+
 
 }

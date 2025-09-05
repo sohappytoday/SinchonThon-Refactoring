@@ -11,19 +11,24 @@ import shinchonton.backend.major.domain.Major;
 @AllArgsConstructor
 public class Mento extends Users {
 
-    @Column(nullable = false)
+    @Column
     private String schoolname;
 
-    @Column(nullable = false)
+    @Column
     private String openchaturl;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
+    @Column
     private Category category;
 
     @OneToOne
-    @JoinColumn(name = "major_id", nullable = false) // FK
+    @JoinColumn(name = "major_id", nullable = true) // FK
     private Major major;
+
+    @Override
+    public  UserType getUserType() {
+        return UserType.MENTO;
+    }
 
     @Builder
     public Mento(String account,

@@ -9,11 +9,15 @@ import shinchonton.backend.users.domain.Users;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 public class Menti extends Users {
 
     @Column
     private Long age;
+
+    @Override
+    public  UserType getUserType() {
+        return UserType.MENTI;
+    }
 
     @Builder
     public Menti(String account, String password, String nickname, Long age) {
