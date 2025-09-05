@@ -5,14 +5,14 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.security.config.Customizer;
 import shinchonton.backend.token.jwt.TokenAuthenticationFilter;
 
 @Configuration
@@ -25,20 +25,20 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                // JWT 기반 -> 상태 없음
+                // JWT 기반 → 세션 안 씀
                 .csrf(csrf -> csrf.disable())
                 .formLogin(form -> form.disable())
                 .httpBasic(basic -> basic.disable())
+                .logout(logout -> logout.disable()) // 🔥 기본 로그아웃 비활성화
                 .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 
-                // CORS 적용 (WebMvcConfigurer에서 설정한 정책 사용)
+                // CORS 적용
                 .cors(Customizer.withDefaults())
 
                 // 인증/인가 규칙
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers(HttpMethod.POST, "/api/auth/login").permitAll()
-                        .requestMatchers("/users/**").permitAll()
-                        .requestMatchers("/api/auth/logout").authenticated()
+                        .requestMatchers(HttpMethod.POST, "/login").permitAll()   // 로그인은 누구나 가능
+                        .requestMatchers(HttpMethod.POST, "/logout").authenticated() // 로그아웃은 인증 필요
                         .anyRequest().permitAll()
                 )
 

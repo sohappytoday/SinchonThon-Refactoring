@@ -25,6 +25,9 @@ public class Mento extends Users {
     @JoinColumn(name = "major_id", nullable = true) // FK
     private Major major;
 
+    @Column
+    private String description;
+
     @Override
     public  UserType getUserType() {
         return UserType.MENTO;
@@ -37,7 +40,8 @@ public class Mento extends Users {
                  String schoolname,
                  String openchaturl,
                  Category category,
-                 Major major) {
+                 Major major,
+                 String description) {
 
         super(null, account, password, nickname);
 
@@ -59,5 +63,6 @@ public class Mento extends Users {
         this.openchaturl = openchaturl;
         this.category = category;
         this.major = major;
+        this.description = description;
     }
 }

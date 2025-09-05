@@ -26,5 +26,6 @@ public class SignUpRequest {
     private String schoolName;
     private String major;     // 과
     private String openChatUrl;
+    private String description;
 }
 
