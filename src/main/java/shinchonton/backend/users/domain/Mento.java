@@ -21,8 +21,8 @@ public class Mento extends Users {
     @Column
     private Category category;
 
-    @OneToOne
-    @JoinColumn(name = "major_id", nullable = true) // FK
+    @ManyToOne
+    @JoinColumn(name = "major_id", nullable = true)
     private Major major;
 
     @Column

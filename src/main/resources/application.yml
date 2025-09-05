@@ -4,16 +4,16 @@ spring:
   profiles:
     active: local
   datasource:
-    url: jdbc:mysql://localhost:3306/careerBTI # DB ??
+    url: jdbc:mysql://mutsa-db.c9c6sgcw26xh.ap-southeast-2.rds.amazonaws.com:3306/careerBTI?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
     driver-class-name: com.mysql.cj.jdbc.Driver
-    username: ${DB_USERNAME}
-    password: ${DB_PASSWORD}
+    username: gwanghwi
+    password: gwang12345
     hikari:
       read-only: false # ??? ?? ??
 
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: update
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL8Dialect
@@ -25,5 +25,5 @@ data:
   init: true
 
 jwt:
-  issuer: ${JWT_ISSUER}
-  secret_key: ${JWT_SECRET_KEY}
+  issuer: career-bti-app
+  secret_key: careerBTISecretKey1234567890careerBTISecretKey
