@@ -1,1 +1,25 @@
-spring.application.name=backend
+spring:
+  application:
+    name: backend-project
+  profiles:
+    active: local
+  datasource:
+    url: jdbc:mysql://localhost:3306/backend # DB ??
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: ${DB_USERNAME} # .env? ??? username
+    password: ${DB_PASSWORD} # .env? ??? password
+    hikari:
+      read-only: false # ??? ?? ??
+
+  jpa:
+    hibernate:
+      ddl-auto: create  # ???? create, ?? ? update? ??
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        format_sql: true
+        show_sql: true
+    open-in-view: true
+
+data:
+  init: true
