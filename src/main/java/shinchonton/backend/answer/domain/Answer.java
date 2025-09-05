@@ -14,8 +14,15 @@ public class Answer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long answerId;
 
+
     @Column
-    private String prevId;
+    private Long prev1Id;
+
+    @Column
+    private Long prev2Id;
+
+    @Column
+    private Long prev3Id;
 
     @Column
     private String answerContent;
