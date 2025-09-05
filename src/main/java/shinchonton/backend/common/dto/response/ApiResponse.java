@@ -1,4 +1,4 @@
-package shinchonton.backend.dto.response;
+package shinchonton.backend.common.dto.response;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

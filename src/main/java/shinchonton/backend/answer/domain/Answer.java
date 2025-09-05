@@ -1,21 +1,22 @@
-package shinchonton.backend.domain;
+package shinchonton.backend.answer.domain;
+
 import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Table(name = "question")
+@Table(name = "answer")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Question {
+public class Answer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long questionId;
+    private Long answerId;
 
     @Column
     private String prevId;
 
     @Column
-    private String questionContent;
+    private String answerContent;
 }

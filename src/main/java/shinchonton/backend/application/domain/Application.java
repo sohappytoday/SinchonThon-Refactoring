@@ -1,7 +1,8 @@
-package shinchonton.backend.domain;
+package shinchonton.backend.application.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
+import shinchonton.backend.users.domain.Users;
 
 @Entity
 @Table(name = "application")
@@ -17,10 +18,10 @@ public class Application {
     // 신청 보낸 사람 (멘티)
     @ManyToOne
     @JoinColumn(name = "sender_id", nullable = false)
-    private Menti sender;
+    private Users sender;
 
     // 신청 받은 사람 (멘토)
     @ManyToOne
     @JoinColumn(name = "receiver_id", nullable = false)
-    private Mento receiver;
+    private Users receiver;
 }

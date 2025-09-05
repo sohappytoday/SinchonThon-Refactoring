@@ -1,17 +1,17 @@
-package shinchonton.backend.domain;
+package shinchonton.backend.users.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.List;
-
 @Entity
-@Table(name = "menti")
-@Data
-@NoArgsConstructor
+@Table(name = "users") // mento/menti를 통합할 테이블
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "dtype") // 구분 컬럼
+@Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-@Builder
-public class Menti {
+public abstract class Users {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
@@ -25,6 +25,5 @@ public class Menti {
     @Column(nullable = false)
     private String nickname;
 
-    @Column
-    private Long age;
+
 }

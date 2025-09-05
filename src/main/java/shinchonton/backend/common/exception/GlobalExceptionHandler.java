@@ -1,9 +1,9 @@
-package shinchonton.backend.exception;
+package shinchonton.backend.common.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import shinchonton.backend.dto.response.ApiResponse;
+import shinchonton.backend.common.dto.response.ApiResponse;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
