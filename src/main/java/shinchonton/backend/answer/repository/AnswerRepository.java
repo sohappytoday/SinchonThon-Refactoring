@@ -9,4 +9,6 @@ import java.util.Optional;
 public interface AnswerRepository extends JpaRepository<Answer, Long> {
     Optional<Answer> findByAnswerContent(String answerContent);
     List<Answer> findByPrev1IdAndPrev2IdIsNull(Long prev1Id);
+    List<Answer> findByPrev2IdAndPrev3IdIsNull(Long prev2Id);
+    List<Answer> findByPrev2IdAndPrev3Id(Long prev2Id, Long prev3Id);
 }

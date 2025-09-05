@@ -3,6 +3,6 @@ package shinchonton.backend.answer.dto.request;
 import lombok.Data;
 
 @Data
-public class Answer1Request {
+public class AnswerRequest {
     private Long answerId;
 }

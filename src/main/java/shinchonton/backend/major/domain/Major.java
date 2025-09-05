@@ -2,10 +2,15 @@ package shinchonton.backend.major.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
+import shinchonton.backend.answer.domain.Answer;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "major")
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -17,4 +22,17 @@ public class Major {
 
     @Column(nullable = false)
     private String name;   // 학과명 (예: 컴퓨터공학과, 국어국문학과)
+
+    @Column
+    private String content;
+
+    // Many-to-Many 관계 설정
+    @ManyToMany
+    @JoinTable(
+            name = "major_answer3",
+            joinColumns = @JoinColumn(name = "major_id"),
+            inverseJoinColumns = @JoinColumn(name = "answer3_id")
+    )
+    private List<Answer> answers3 = new ArrayList<>();
+
 }

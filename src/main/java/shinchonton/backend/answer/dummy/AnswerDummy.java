@@ -101,14 +101,10 @@ public class AnswerDummy {
                         .build(),
                 // 18
                 Answer.builder()
-                        .prev1Id(1L)
-                        .prev2Id(4L)
                         .answerContent("중학생")
                         .build(),
                 // 19
                 Answer.builder()
-                        .prev1Id(1L)
-                        .prev2Id(4L)
                         .answerContent("고등학생")
                         .build(),
                 // 20

@@ -2,6 +2,10 @@ package shinchonton.backend.answer.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
+import shinchonton.backend.major.domain.Major;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "answer")
@@ -26,4 +30,7 @@ public class Answer {
 
     @Column
     private String answerContent;
+
+    @ManyToMany(mappedBy = "answers3")
+    private List<Major> majors = new ArrayList<>();
 }
