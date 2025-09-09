@@ -2,7 +2,7 @@ package shinchonton.backend.answer.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
-import shinchonton.backend.user.domain.Users;
+import shinchonton.backend.user.domain.User;
 
 @Builder
 @Setter
@@ -18,7 +18,7 @@ public class UserAnswer {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
-    private Users user;
+    private User user;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "answer1_id")

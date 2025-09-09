@@ -9,7 +9,7 @@ import shinchonton.backend.major.domain.Major;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-public class Mento extends User {
+public class Mentor extends User {
 
     @Column
     private String schoolname;
@@ -34,14 +34,14 @@ public class Mento extends User {
     }
 
     @Builder
-    public Mento(String account,
-                 String password,
-                 String nickname,
-                 String schoolname,
-                 String openchaturl,
-                 Category category,
-                 Major major,
-                 String description) {
+    public Mentor(String account,
+                  String password,
+                  String nickname,
+                  String schoolname,
+                  String openchaturl,
+                  Category category,
+                  Major major,
+                  String description) {
 
         super(null, account, password, nickname);
 

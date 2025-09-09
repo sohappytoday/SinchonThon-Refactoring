@@ -12,7 +12,7 @@ import shinchonton.backend.user.service.MentoProfileService;
 @RestController
 @RequestMapping("/profile") // 공통 prefix
 @RequiredArgsConstructor
-public class MentoProfileController {
+public class MentorProfileController {
 
     private final MentoProfileService mentoProfileService;
 

@@ -34,7 +34,7 @@ public class UserService {
             Major major = majorRepository.findByName(request.getMajor())
                     .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 전공입니다."));
 
-            userRepository.save(Mento.builder()
+            userRepository.save(Mentor.builder()
                     .account(request.getAccount())
                     .password(passwordEncoder.encode(request.getPassword()))
                     .nickname(request.getNickname())
@@ -46,7 +46,7 @@ public class UserService {
 
             // MENTI 가입
         } else if (request.getUserType() == UserType.MENTI) {
-            userRepository.save(Menti.builder()
+            userRepository.save(Mentee.builder()
                     .account(request.getAccount())
                     .password(passwordEncoder.encode(request.getPassword()))
                     .nickname(request.getNickname())

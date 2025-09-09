@@ -12,7 +12,7 @@ import shinchonton.backend.user.service.MentiProfileService;
 @RestController
 @RequestMapping("/profile")
 @RequiredArgsConstructor
-public class MentiProfileController {
+public class MenteeProfileController {
 
     private final MentiProfileService mentiProfileService;
 

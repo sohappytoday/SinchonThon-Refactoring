@@ -2,14 +2,14 @@ package shinchonton.backend.user.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
-import shinchonton.backend.user.domain.Users;
+import shinchonton.backend.user.domain.User;
 
 @Entity
 @DiscriminatorValue("MENTI") // dtype = 'MENTI'
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Menti extends User {
+public class Mentee extends User {
 
     @Column
     private Long age;
@@ -20,7 +20,7 @@ public class Menti extends User {
     }
 
     @Builder
-    public Menti(String account, String password, String nickname, Long age) {
+    public Mentee(String account, String password, String nickname, Long age) {
         super(null, account, password, nickname);
         if (age == null){
             throw new IllegalArgumentException("age 없음");

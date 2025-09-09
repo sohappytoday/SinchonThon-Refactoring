@@ -8,7 +8,6 @@ import shinchonton.backend.token.dto.request.LoginRequest;
 import shinchonton.backend.token.dto.response.LoginResponse;
 import shinchonton.backend.token.exception.InvalidPasswordException;
 import shinchonton.backend.user.domain.User;
-import shinchonton.backend.user.domain.Users;
 import shinchonton.backend.user.repository.UserRepository;
 
 @RequiredArgsConstructor

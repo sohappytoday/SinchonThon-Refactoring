@@ -8,7 +8,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Service;
 import shinchonton.backend.user.domain.User;
-import shinchonton.backend.user.domain.Users;
+import shinchonton.backend.user.domain.User;
 
 import java.nio.charset.StandardCharsets;
 import java.security.Key;

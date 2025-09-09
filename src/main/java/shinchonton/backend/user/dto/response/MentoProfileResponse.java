@@ -2,7 +2,7 @@ package shinchonton.backend.user.dto.response;
 
 import lombok.Builder;
 import lombok.Getter;
-import shinchonton.backend.user.domain.Mento;
+import shinchonton.backend.user.domain.Mentor;
 
 @Getter
 @Builder
@@ -11,11 +11,11 @@ public class MentoProfileResponse {
     private String major;
     private String description;
 
-    public static MentoProfileResponse of(Mento mento) {
+    public static MentoProfileResponse of(Mentor mentor) {
         return MentoProfileResponse.builder()
-                .nickname(mento.getNickname())
-                .major(mento.getMajor().getName())
-                .description(mento.getDescription())
+                .nickname(mentor.getNickname())
+                .major(mentor.getMajor().getName())
+                .description(mentor.getDescription())
                 .build();
     }
 }

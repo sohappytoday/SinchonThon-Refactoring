@@ -9,7 +9,7 @@ import shinchonton.backend.answer.dto.response.AnswerResponse;
 import shinchonton.backend.answer.repository.AnswerRepository;
 import shinchonton.backend.answer.repository.UserAnswerRepository;
 import shinchonton.backend.major.dto.MajorResponse;
-import shinchonton.backend.user.domain.Users;
+import shinchonton.backend.user.domain.User;
 import shinchonton.backend.user.repository.UserRepository;
 
 import java.util.List;
@@ -31,7 +31,7 @@ public class AnswerService {
 
     @Transactional
     public List<AnswerResponse> saveFirstAnswerAndGetNext(Long userId, Long answerId) {
-        Users user = userRepository.findById(userId)
+        User user = userRepository.findById(userId)
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 유저"));
 
         UserAnswer userAnswer = userAnswerRepository.findByUser(user)
@@ -52,7 +52,7 @@ public class AnswerService {
 
     @Transactional
     public List<AnswerResponse> saveSecondAnswerAndGetNext(Long userId, Long answerId) {
-        Users user = userRepository.findById(userId)
+        User user = userRepository.findById(userId)
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 유저"));
 
         // userAnswer 찾거나 새로 생성
@@ -75,7 +75,7 @@ public class AnswerService {
 
     @Transactional
     public List<AnswerResponse> saveThirdAnswerAndGetNext(Long userId, Long answerId) {
-        Users user = userRepository.findById(userId)
+        User user = userRepository.findById(userId)
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 유저"));
 
         UserAnswer userAnswer = userAnswerRepository.findByUser(user)
@@ -96,7 +96,7 @@ public class AnswerService {
 
     @Transactional
     public List<MajorResponse> saveFourthAnswerAndGetMajors(Long userId, Long answerId) {
-        Users user = userRepository.findById(userId)
+        User user = userRepository.findById(userId)
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 유저"));
 
         // 유저의 답변 불러오기 (없으면 새로 생성)
