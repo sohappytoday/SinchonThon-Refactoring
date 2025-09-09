@@ -2,6 +2,7 @@ package shinchonton.backend.major.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
+import shinchonton.backend.users.domain.Category;
 import shinchonton.backend.answer.domain.Answer;
 
 import java.util.ArrayList;
@@ -26,6 +27,10 @@ public class Major {
     @Column
     private String content;
 
+    @Enumerated(EnumType.STRING)  // Category enum을 문자열로 저장
+    @Column(nullable = false)
+    private Category category;   // 계열 (문과/이과/예체능)
+
     // Many-to-Many 관계 설정
     @ManyToMany
     @JoinTable(
@@ -34,5 +39,4 @@ public class Major {
             inverseJoinColumns = @JoinColumn(name = "answer3_id")
     )
     private List<Answer> answers3 = new ArrayList<>();
-
 }
