@@ -5,7 +5,7 @@ import lombok.*;
 import shinchonton.backend.user.domain.User;
 
 @Entity
-@DiscriminatorValue("MENTI") // dtype = 'MENTI'
+@DiscriminatorValue("MENTEE") // dtype = 'MENTEE'
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
@@ -16,7 +16,7 @@ public class Mentee extends User {
 
     @Override
     public  UserType getUserType() {
-        return UserType.MENTI;
+        return UserType.MENTEE;
     }
 
     @Builder

@@ -7,12 +7,12 @@ import java.util.List;
 
 @Getter
 @Builder
-public class MentoSelectedMentisResponse {
-    private List<MentiSummary> mentis;
+public class MentorSelectedMenteesResponse {
+    private List<MenteeSummary> mentees;
 
     @Getter
     @Builder
-    public static class MentiSummary {
+    public static class MenteeSummary {
         private String nickname;
     }
 }

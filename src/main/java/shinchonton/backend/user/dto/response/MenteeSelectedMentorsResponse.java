@@ -7,8 +7,8 @@ import java.util.List;
 
 @Getter
 @Builder
-public class MentiSelectedMentosResponse {
-    private List<MentoSummary> mentos;
+public class MenteeSelectedMentorsResponse {
+    private List<MentoSummary> mentors;
 
     @Getter
     @Builder

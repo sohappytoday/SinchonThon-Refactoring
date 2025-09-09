@@ -5,7 +5,7 @@ import lombok.*;
 import shinchonton.backend.major.domain.Major;
 
 @Entity
-@DiscriminatorValue("MENTO") // dtype = 'MENTO'
+@DiscriminatorValue("MENTOR") // dtype = 'MENTOR'
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
@@ -30,7 +30,7 @@ public class Mentor extends User {
 
     @Override
     public  UserType getUserType() {
-        return UserType.MENTO;
+        return UserType.MENTOR;
     }
 
     @Builder

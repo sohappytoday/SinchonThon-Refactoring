@@ -6,28 +6,28 @@ import org.springframework.web.bind.annotation.*;
 import shinchonton.backend.common.dto.response.ApiResponse;
 import shinchonton.backend.token.jwt.TokenAuthenticationFilter;
 import shinchonton.backend.user.domain.UserType;
-import shinchonton.backend.user.dto.response.MentoProfileResponse;
-import shinchonton.backend.user.service.MentoProfileService;
+import shinchonton.backend.user.dto.response.MentorProfileResponse;
+import shinchonton.backend.user.service.MentorProfileService;
 
 @RestController
 @RequestMapping("/profile") // 공통 prefix
 @RequiredArgsConstructor
 public class MentorProfileController {
 
-    private final MentoProfileService mentoProfileService;
+    private final MentorProfileService mentorProfileService;
 
-    @GetMapping("/mento")
-    public ResponseEntity<ApiResponse<MentoProfileResponse>> getMyProfile(
+    @GetMapping("/mentor")
+    public ResponseEntity<ApiResponse<MentorProfileResponse>> getMyProfile(
             @RequestAttribute(name = TokenAuthenticationFilter.ATTR_USER_ID) Long userId,
             @RequestAttribute(name = TokenAuthenticationFilter.ATTR_USER_TYPE) String userType
     ) {
-        if (!UserType.MENTO.name().equals(userType)) {
+        if (!UserType.MENTOR.name().equals(userType)) {
             return ResponseEntity.badRequest().body(
                     new ApiResponse<>(false, 400, "멘토만 조회할 수 있습니다.")
             );
         }
 
-        MentoProfileResponse profile = mentoProfileService.getProfile(userId);
+        MentorProfileResponse profile = mentorProfileService.getProfile(userId);
         return ResponseEntity.ok(
                 new ApiResponse<>(true, 200, "프로필 조회 성공", profile)
         );

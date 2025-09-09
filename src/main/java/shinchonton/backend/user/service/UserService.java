@@ -26,7 +26,7 @@ public class UserService {
         }
 
         // MENTO 가입
-        if (request.getUserType() == UserType.MENTO) {
+        if (request.getUserType() == UserType.MENTOR) {
             if (request.getMajor() == null || request.getMajor().isBlank()) {
                 throw new IllegalArgumentException("전공은 필수 입력값입니다.");
             }
@@ -45,7 +45,7 @@ public class UserService {
                     .build());
 
             // MENTI 가입
-        } else if (request.getUserType() == UserType.MENTI) {
+        } else if (request.getUserType() == UserType.MENTEE) {
             userRepository.save(Mentee.builder()
                     .account(request.getAccount())
                     .password(passwordEncoder.encode(request.getPassword()))

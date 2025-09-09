@@ -6,13 +6,13 @@ import shinchonton.backend.user.domain.Mentor;
 
 @Getter
 @Builder
-public class MentoProfileResponse {
+public class MentorProfileResponse {
     private String nickname;
     private String major;
     private String description;
 
-    public static MentoProfileResponse of(Mentor mentor) {
-        return MentoProfileResponse.builder()
+    public static MentorProfileResponse of(Mentor mentor) {
+        return MentorProfileResponse.builder()
                 .nickname(mentor.getNickname())
                 .major(mentor.getMajor().getName())
                 .description(mentor.getDescription())

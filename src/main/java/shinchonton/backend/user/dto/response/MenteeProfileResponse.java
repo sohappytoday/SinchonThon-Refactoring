@@ -6,11 +6,11 @@ import shinchonton.backend.user.domain.Mentee;
 
 @Getter
 @Builder
-public class MentiProfileResponse {
+public class MenteeProfileResponse {
     private String nickname;
 
-    public static MentiProfileResponse of(Mentee mentee) {
-        return MentiProfileResponse.builder()
+    public static MenteeProfileResponse of(Mentee mentee) {
+        return MenteeProfileResponse.builder()
                 .nickname(mentee.getNickname())
                 .build();
     }

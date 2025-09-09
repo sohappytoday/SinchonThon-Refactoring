@@ -3,19 +3,19 @@ package shinchonton.backend.user.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import shinchonton.backend.user.dto.response.MentiProfileResponse;
+import shinchonton.backend.user.dto.response.MenteeProfileResponse;
 import shinchonton.backend.user.repository.MenteeRepository;
 
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
-public class MentiProfileService {
+public class MenteeProfileService {
 
     private final MenteeRepository menteeRepository;
 
-    public MentiProfileResponse getProfile(Long userId) {
+    public MenteeProfileResponse getProfile(Long userId) {
         return menteeRepository.findByUserId(userId)
-                .map(MentiProfileResponse::of)
+                .map(MenteeProfileResponse::of)
                 .orElseThrow(() -> new IllegalArgumentException("멘티 정보를 찾을 수 없습니다."));
     }
 }
