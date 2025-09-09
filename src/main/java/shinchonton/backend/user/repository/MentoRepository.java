@@ -1,7 +1,7 @@
-package shinchonton.backend.users.repository;
+package shinchonton.backend.user.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import shinchonton.backend.users.domain.Mento;
+import shinchonton.backend.user.domain.Mento;
 
 import java.util.Optional;
 

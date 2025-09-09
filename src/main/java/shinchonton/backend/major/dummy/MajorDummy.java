@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import shinchonton.backend.major.domain.Major;
 import shinchonton.backend.major.repository.MajorRepository;
-import shinchonton.backend.users.domain.Category;
+import shinchonton.backend.user.domain.Category;
 
 import java.util.*;
 

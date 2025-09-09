@@ -2,7 +2,7 @@ package shinchonton.backend.application.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
-import shinchonton.backend.users.domain.Users;
+import shinchonton.backend.user.domain.Users;
 
 @Entity
 @Table(name = "application")

@@ -1,11 +1,10 @@
-package shinchonton.backend.users.dto.request;
+package shinchonton.backend.user.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import shinchonton.backend.major.domain.Major;
-import shinchonton.backend.users.domain.UserType;
+import shinchonton.backend.user.domain.UserType;
 
 @Getter
 @NoArgsConstructor

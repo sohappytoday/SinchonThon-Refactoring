@@ -1,15 +1,15 @@
-package shinchonton.backend.users.domain;
+package shinchonton.backend.user.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
-import shinchonton.backend.users.domain.Users;
+import shinchonton.backend.user.domain.Users;
 
 @Entity
 @DiscriminatorValue("MENTI") // dtype = 'MENTI'
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Menti extends Users {
+public class Menti extends User {
 
     @Column
     private Long age;

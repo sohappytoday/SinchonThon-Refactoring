@@ -1,4 +1,4 @@
-package shinchonton.backend.users.service;
+package shinchonton.backend.user.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -6,16 +6,16 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import shinchonton.backend.major.domain.Major;
 import shinchonton.backend.major.repository.MajorRepository;
-import shinchonton.backend.users.domain.*;
-import shinchonton.backend.users.dto.request.SignUpRequest;
-import shinchonton.backend.users.repository.UsersRepository;
+import shinchonton.backend.user.domain.*;
+import shinchonton.backend.user.dto.request.SignUpRequest;
+import shinchonton.backend.user.repository.UserRepository;
 
 @Service
 @RequiredArgsConstructor
 @Transactional
-public class UsersService {
+public class UserService {
 
-    private final UsersRepository userRepository;
+    private final UserRepository userRepository;
     private final MajorRepository majorRepository;
     private final PasswordEncoder passwordEncoder;
 

@@ -1,8 +1,8 @@
-package shinchonton.backend.users.dto.response;
+package shinchonton.backend.user.dto.response;
 
 import lombok.Builder;
 import lombok.Getter;
-import shinchonton.backend.users.domain.Menti;
+import shinchonton.backend.user.domain.Menti;
 
 @Getter
 @Builder

@@ -1,4 +1,4 @@
-package shinchonton.backend.users.domain;
+package shinchonton.backend.user.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -9,7 +9,7 @@ import shinchonton.backend.major.domain.Major;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-public class Mento extends Users {
+public class Mento extends User {
 
     @Column
     private String schoolname;

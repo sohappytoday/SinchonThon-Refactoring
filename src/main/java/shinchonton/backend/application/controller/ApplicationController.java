@@ -8,9 +8,9 @@ import shinchonton.backend.application.dto.request.SelectMentorRequest;
 import shinchonton.backend.application.service.ApplicationService;
 import shinchonton.backend.common.dto.response.ApiResponse;
 import shinchonton.backend.token.jwt.TokenAuthenticationFilter;
-import shinchonton.backend.users.domain.UserType;
-import shinchonton.backend.users.dto.response.MentiSelectedMentosResponse;
-import shinchonton.backend.users.dto.response.MentoSelectedMentisResponse;
+import shinchonton.backend.user.domain.UserType;
+import shinchonton.backend.user.dto.response.MentiSelectedMentosResponse;
+import shinchonton.backend.user.dto.response.MentoSelectedMentisResponse;
 
 @RestController
 @RequestMapping("/profile")

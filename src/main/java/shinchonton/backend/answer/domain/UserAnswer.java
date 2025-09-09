@@ -2,7 +2,7 @@ package shinchonton.backend.answer.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
-import shinchonton.backend.users.domain.Users;
+import shinchonton.backend.user.domain.Users;
 
 @Builder
 @Setter

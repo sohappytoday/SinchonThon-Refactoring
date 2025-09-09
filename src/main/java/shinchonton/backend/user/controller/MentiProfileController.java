@@ -1,13 +1,13 @@
-package shinchonton.backend.users.controller;
+package shinchonton.backend.user.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import shinchonton.backend.common.dto.response.ApiResponse;
 import shinchonton.backend.token.jwt.TokenAuthenticationFilter;
-import shinchonton.backend.users.domain.UserType;
-import shinchonton.backend.users.dto.response.MentiProfileResponse;
-import shinchonton.backend.users.service.MentiProfileService;
+import shinchonton.backend.user.domain.UserType;
+import shinchonton.backend.user.dto.response.MentiProfileResponse;
+import shinchonton.backend.user.service.MentiProfileService;
 
 @RestController
 @RequestMapping("/profile")

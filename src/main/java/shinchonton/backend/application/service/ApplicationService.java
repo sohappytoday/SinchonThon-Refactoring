@@ -5,14 +5,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import shinchonton.backend.application.domain.Application;
 import shinchonton.backend.application.repository.ApplicationRepository;
-import shinchonton.backend.users.domain.Menti;
-import shinchonton.backend.users.domain.Mento;
-import shinchonton.backend.users.domain.Users;
-import shinchonton.backend.users.dto.response.MentiSelectedMentosResponse;
-import shinchonton.backend.users.dto.response.MentoSelectedMentisResponse;
-import shinchonton.backend.users.repository.MentiRepository;
-import shinchonton.backend.users.repository.MentoRepository;
-import shinchonton.backend.users.repository.UsersRepository;
+import shinchonton.backend.user.domain.Menti;
+import shinchonton.backend.user.domain.Mento;
+import shinchonton.backend.user.domain.Users;
+import shinchonton.backend.user.dto.response.MentiSelectedMentosResponse;
+import shinchonton.backend.user.dto.response.MentoSelectedMentisResponse;
+import shinchonton.backend.user.repository.MentiRepository;
+import shinchonton.backend.user.repository.MentoRepository;
+import shinchonton.backend.user.repository.UserRepository;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -23,13 +23,13 @@ import java.util.stream.Collectors;
 public class ApplicationService {
 
     private final ApplicationRepository applicationRepository;
-    private final UsersRepository usersRepository;
+    private final UserRepository userRepository;
     private final MentiRepository mentiRepository;
     private final MentoRepository mentoRepository;
 
     // 멘토가 선택한 멘티
     public MentoSelectedMentisResponse getSelectedMentis(Long mentoId) {
-        Users mento = usersRepository.findById(mentoId)
+        Users mento = userRepository.findById(mentoId)
                 .orElseThrow(() -> new IllegalArgumentException("멘토 정보를 찾을 수 없습니다."));
 
         List<Application> applications = applicationRepository.findByReceiver(mento);
@@ -47,7 +47,7 @@ public class ApplicationService {
 
     // 멘티가 선택한 멘토
     public MentiSelectedMentosResponse getSelectedMentos(Long mentiId) {
-        Users menti = usersRepository.findById(mentiId)
+        Users menti = userRepository.findById(mentiId)
                 .orElseThrow(() -> new IllegalArgumentException("멘티 정보를 찾을 수 없습니다."));
         List<Application> applications = applicationRepository.findBySender(menti);
 

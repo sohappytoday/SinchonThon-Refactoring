@@ -7,8 +7,8 @@ import shinchonton.backend.token.domain.RefreshToken;
 import shinchonton.backend.token.dto.response.LoginResponse;
 import shinchonton.backend.token.jwt.TokenProvider;
 import shinchonton.backend.token.repository.RefreshTokenRepository;
-import shinchonton.backend.users.domain.Users;
-import shinchonton.backend.users.service.UserQueryService;
+import shinchonton.backend.user.domain.User;
+import shinchonton.backend.user.service.UserQueryService;
 
 import java.time.Duration;
 import java.time.Instant;
@@ -28,7 +28,7 @@ public class TokenService {
 
     // [MOD] 로그인 시 AT,RT 제공 (sid 사용 시)
     @Transactional
-    public LoginResponse issueTokens(Users user) {
+    public LoginResponse issueTokens(User user) {
         String refresh = tokenProvider.generateRefreshToken(user, REFRESH_EXPIRES);   // RT 생성
         Instant now = Instant.now();
 
@@ -44,7 +44,7 @@ public class TokenService {
     // 재발급 메서드(유효 RT로 새 AT 발급)
     public String createNewAccessToken(String refreshToken) {
         RefreshToken rt = refreshTokenService.getActiveByTokenOrThrow(refreshToken);    //RT 유효한지 체크
-        Users user = userQueryService.findById(rt.getUserId());                               //RT로 User를 찾기
+        User user = userQueryService.findById(rt.getUserId());                               //RT로 User를 찾기
         // 기존 세션 유지: AT에 sid 로 rt.getTokenId() 포함
         return tokenProvider.generateAccessToken(user, ACCESS_EXPIRES, rt.getTokenId()); //Access token 지급
     }

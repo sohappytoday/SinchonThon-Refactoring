@@ -1,4 +1,4 @@
-package shinchonton.backend.users.dto.response;
+package shinchonton.backend.user.dto.response;
 
 import lombok.Builder;
 import lombok.Getter;

@@ -2,7 +2,7 @@ package shinchonton.backend.application.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import shinchonton.backend.application.domain.Application;
-import shinchonton.backend.users.domain.Users;
+import shinchonton.backend.user.domain.Users;
 
 import java.util.List;
 import java.util.Optional;

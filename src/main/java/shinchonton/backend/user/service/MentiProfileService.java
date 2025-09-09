@@ -1,10 +1,10 @@
-package shinchonton.backend.users.service;
+package shinchonton.backend.user.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import shinchonton.backend.users.dto.response.MentiProfileResponse;
-import shinchonton.backend.users.repository.MentiRepository;
+import shinchonton.backend.user.dto.response.MentiProfileResponse;
+import shinchonton.backend.user.repository.MentiRepository;
 
 @Service
 @RequiredArgsConstructor

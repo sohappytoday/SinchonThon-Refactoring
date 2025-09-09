@@ -1,19 +1,19 @@
-package shinchonton.backend.users.service;
+package shinchonton.backend.user.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import shinchonton.backend.users.domain.Users;
-import shinchonton.backend.users.repository.UsersRepository;
+import shinchonton.backend.user.domain.User;
+import shinchonton.backend.user.repository.UserRepository;
 
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
 public class UserQueryService {
 
-    private final UsersRepository userRepository;
+    private final UserRepository userRepository;
 
-    public Users findById(Long userId){
+    public User findById(Long userId){
         return userRepository.findById(userId).orElseThrow();
     }
 }

@@ -2,7 +2,7 @@ package shinchonton.backend.major.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
-import shinchonton.backend.users.domain.Category;
+import shinchonton.backend.user.domain.Category;
 import shinchonton.backend.answer.domain.Answer;
 
 import java.util.ArrayList;

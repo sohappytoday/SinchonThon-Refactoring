@@ -7,7 +7,8 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Service;
-import shinchonton.backend.users.domain.Users;
+import shinchonton.backend.user.domain.User;
+import shinchonton.backend.user.domain.Users;
 
 import java.nio.charset.StandardCharsets;
 import java.security.Key;
@@ -28,20 +29,20 @@ public class TokenProvider {
     }
 
     /** RT 생성용: sid 없이 쓰는 토큰 생성 */
-    public String generateRefreshToken(Users user, Duration expiresIn) {
+    public String generateRefreshToken(User user, Duration expiresIn) {
         Date now = new Date();
         Date expiry = new Date(now.getTime() + expiresIn.toMillis());
         return makeToken(expiry, user, now, null);
     }
 
     /** AT 생성용: RefreshToken.tokenId를 sid로 넣어준다 */
-    public String generateAccessToken(Users user, Duration expiresIn, Long sid) {
+    public String generateAccessToken(User user, Duration expiresIn, Long sid) {
         Date now = new Date();
         Date expiry = new Date(now.getTime() + expiresIn.toMillis());
         return makeToken(expiry, user, now, sid);
     }
 
-    private String makeToken(Date expiry, Users user, Date now, Long sid) {
+    private String makeToken(Date expiry, User user, Date now, Long sid) {
         JwtBuilder builder = Jwts.builder()
                 .setHeaderParam(Header.TYPE, Header.JWT_TYPE)
                 .setIssuer(jwtProperties.getIssuer())
