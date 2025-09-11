@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import shinchonton.backend.major.domain.Major;
 import shinchonton.backend.major.repository.MajorRepository;
-import shinchonton.backend.user.domain.Category;
+import shinchonton.backend.user.domain.MajorCategory;
 
 import java.util.*;
 
@@ -17,9 +17,9 @@ public class MajorDummy {
     private final MajorRepository majorRepository;
 
     // ✅ enum 매핑
-    private static final Category C_HUM = Category.LITERATURE; // 문과
-    private static final Category C_SCI = Category.SCIENCE;    // 이과
-    private static final Category C_ART = Category.ARTS;       // 예체능
+    private static final MajorCategory C_HUM = MajorCategory.LITERATURE; // 문과
+    private static final MajorCategory C_SCI = MajorCategory.SCIENCE;    // 이과
+    private static final MajorCategory C_ART = MajorCategory.ARTS;       // 예체능
 
     @PostConstruct
     @Transactional
@@ -67,28 +67,28 @@ public class MajorDummy {
 
         // ---- 저장 로직 ----
         for (String name : allMajors) {
-            Category cat = resolveCategory(name, humanities, science, arts, medical);
+            MajorCategory cat = resolveCategory(name, humanities, science, arts, medical);
 
             Major major = majorRepository.findByName(name).orElse(null);
             if (major == null) {
                 major = Major.builder()
                         .name(name)
                         .content(contentMap.getOrDefault(name, defaultContent))
-                        .category(cat) // ✅ category 지정
+                        .majorCategory(cat) // ✅ category 지정
                         .build();
             } else {
                 if (major.getContent() == null || major.getContent().isBlank()) {
                     major.setContent(contentMap.getOrDefault(name, defaultContent));
                 }
-                if (major.getCategory() == null) {
-                    major.setCategory(cat);
+                if (major.getMajorCategory() == null) {
+                    major.setMajorCategory(cat);
                 }
             }
             majorRepository.save(major);
         }
     }
 
-    private Category resolveCategory(
+    private MajorCategory resolveCategory(
             String name,
             List<String> humanities,
             List<String> science,

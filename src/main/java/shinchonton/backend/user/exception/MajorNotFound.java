@@ -3,10 +3,9 @@ package shinchonton.backend.user.exception;
 import shinchonton.backend.common.exception.BusinessException;
 import shinchonton.backend.common.exception.ErrorCode;
 
-//계정 중복 관련
-public class AccountAlreadyExist extends BusinessException {
-
-    public AccountAlreadyExist() {
-        super(ErrorCode.REDUNDANT_ACCOUNT);
+//학과가 리스트에 없을 때
+public class MajorNotFound extends BusinessException {
+    public MajorNotFound() {
+        super(ErrorCode.MAJOR_NOT_FOUND);
     }
 }

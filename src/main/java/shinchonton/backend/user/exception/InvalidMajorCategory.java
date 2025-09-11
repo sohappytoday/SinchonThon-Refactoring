@@ -3,10 +3,8 @@ package shinchonton.backend.user.exception;
 import shinchonton.backend.common.exception.BusinessException;
 import shinchonton.backend.common.exception.ErrorCode;
 
-//계정 중복 관련
-public class AccountAlreadyExist extends BusinessException {
-
-    public AccountAlreadyExist() {
-        super(ErrorCode.REDUNDANT_ACCOUNT);
+public class InvalidMajorCategory extends BusinessException {
+    public InvalidMajorCategory() {
+        super(ErrorCode.INVALID_MAJOR_CATEGORY);
     }
 }

@@ -2,7 +2,7 @@ package shinchonton.backend.major.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
-import shinchonton.backend.user.domain.Category;
+import shinchonton.backend.user.domain.MajorCategory;
 import shinchonton.backend.answer.domain.Answer;
 
 import java.util.ArrayList;
@@ -29,7 +29,7 @@ public class Major {
 
     @Enumerated(EnumType.STRING)  // Category enum을 문자열로 저장
     @Column(nullable = false)
-    private Category category;   // 계열 (문과/이과/예체능)
+    private MajorCategory majorCategory;   // 계열 (문과/이과/예체능)
 
     // Many-to-Many 관계 설정
     @ManyToMany

@@ -19,10 +19,11 @@ public class SignUpRequest {
     private String nickname;    // 닉네임
 
     // Menti 전용
-    private Integer age;
+    private Long age;
 
     // Mento 전용
     private String schoolName;
+    private String majorCategory;
     private String major;     // 과
     private String openChatUrl;
     private String description;

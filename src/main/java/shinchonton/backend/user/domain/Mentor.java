@@ -19,7 +19,7 @@ public class Mentor extends User {
 
     @Enumerated(EnumType.STRING)
     @Column
-    private Category category;
+    private MajorCategory majorCategory;
 
     @ManyToOne
     @JoinColumn(name = "major_id", nullable = true)
@@ -39,7 +39,7 @@ public class Mentor extends User {
                   String nickname,
                   String schoolname,
                   String openchaturl,
-                  Category category,
+                  MajorCategory majorCategory,
                   Major major,
                   String description) {
 
@@ -52,7 +52,7 @@ public class Mentor extends User {
         if (openchaturl == null || openchaturl.isBlank()) {
             throw new IllegalArgumentException("openchaturl is required");
         }
-        if (category == null) {
+        if (majorCategory == null) {
             throw new IllegalArgumentException("category is required");
         }
         if (major == null) {
@@ -61,7 +61,7 @@ public class Mentor extends User {
 
         this.schoolname = schoolname;
         this.openchaturl = openchaturl;
-        this.category = category;
+        this.majorCategory = majorCategory;
         this.major = major;
         this.description = description;
     }
