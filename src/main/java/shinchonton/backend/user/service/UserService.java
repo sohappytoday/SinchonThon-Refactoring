@@ -8,6 +8,7 @@ import shinchonton.backend.major.domain.Major;
 import shinchonton.backend.major.repository.MajorRepository;
 import shinchonton.backend.user.domain.*;
 import shinchonton.backend.user.dto.request.SignUpRequest;
+import shinchonton.backend.user.exception.AccountAlreadyExist;
 import shinchonton.backend.user.repository.UserRepository;
 
 @Service
@@ -20,10 +21,11 @@ public class UserService {
     private final PasswordEncoder passwordEncoder;
 
     public void signup(SignUpRequest request) {
+
         // 계정 중복 체크
-        if (userRepository.existsByAccount(request.getAccount())) {
-            throw new IllegalArgumentException("이미 사용 중인 계정입니다.");
-        }
+            if (userRepository.existsByAccount(request.getAccount())) {
+                throw new AccountAlreadyExist();
+            }
 
         // MENTO 가입
         if (request.getUserType() == UserType.MENTOR) {

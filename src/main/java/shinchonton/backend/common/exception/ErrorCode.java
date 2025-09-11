@@ -1,12 +1,8 @@
-package shinchonton.backend.token.exception;
+package shinchonton.backend.common.exception;
+
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.Getter;
 
-/**
- * 중복: 409
- * 부재: 404
- */
 @Getter
 @AllArgsConstructor
 public enum ErrorCode {
