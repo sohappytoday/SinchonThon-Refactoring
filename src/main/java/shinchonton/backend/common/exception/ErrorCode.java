@@ -13,7 +13,9 @@ public enum ErrorCode {
     REQUIRED_VALUE_EMPTY("400",400, "입력하지 않은 사항이 있습니다."),
     MAJOR_NOT_FOUND("404",404, "리스트에 존재하지 않는 과입니다."),
     INVALID_MAJOR_CATEGORY("404",404,"학과 카테고리가 존재하지 않습니다."),
-    INVALID_USER_TYPE("404",404, "유저 타입이 정확하지 않습니다.");
+    INVALID_USER_TYPE("404",404, "유저 타입이 정확하지 않습니다."),
+    DO_NOT_HAVE_PERMISSION("403",403, "권한이 없습니다.");
+
     private final String code;
     private final int status;
     private final String message;
