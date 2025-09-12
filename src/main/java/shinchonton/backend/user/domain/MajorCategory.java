@@ -7,10 +7,4 @@ public enum MajorCategory {
     SCIENCE,      // 이과
     ARTS;         //예체능
 
-    public static MajorCategory from(String value) {
-        return Arrays.stream(values())
-                .filter(c -> c.name().equalsIgnoreCase(value))
-                .findFirst()
-                .orElseThrow(() -> new InvalidCategoryException());
-    }// 예체능
 }

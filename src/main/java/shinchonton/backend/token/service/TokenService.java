@@ -8,7 +8,7 @@ import shinchonton.backend.token.dto.response.LoginResponse;
 import shinchonton.backend.token.jwt.TokenProvider;
 import shinchonton.backend.token.repository.RefreshTokenRepository;
 import shinchonton.backend.user.domain.User;
-import shinchonton.backend.user.service.UserQueryService;
+import shinchonton.backend.user.service.UserService;
 
 import java.time.Duration;
 import java.time.Instant;
@@ -21,7 +21,7 @@ public class TokenService {
     private final TokenProvider tokenProvider;
     private final RefreshTokenRepository refreshTokenRepository;
     private final RefreshTokenService refreshTokenService;
-    private final UserQueryService userQueryService;
+    private final UserService userService;
     // access token은 15분 refresh token은 14일
     private static final Duration ACCESS_EXPIRES  = Duration.ofDays(5); //프론트를 위한 시간 늘리기
     private static final Duration REFRESH_EXPIRES = Duration.ofDays(14);
@@ -44,7 +44,7 @@ public class TokenService {
     // 재발급 메서드(유효 RT로 새 AT 발급)
     public String createNewAccessToken(String refreshToken) {
         RefreshToken rt = refreshTokenService.getActiveByTokenOrThrow(refreshToken);    //RT 유효한지 체크
-        User user = userQueryService.findById(rt.getUserId());                               //RT로 User를 찾기
+        User user = userService.findById(rt.getUserId());                               //RT로 User를 찾기
         // 기존 세션 유지: AT에 sid 로 rt.getTokenId() 포함
         return tokenProvider.generateAccessToken(user, ACCESS_EXPIRES, rt.getTokenId()); //Access token 지급
     }

@@ -1,12 +1,11 @@
 package shinchonton.backend.common.dto.response;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
 
-@Data
+import lombok.Builder;
+import lombok.Getter;
+
+@Getter
 @Builder
-@AllArgsConstructor
-public class ApiResponse <T> {
+public class ApiResponse<T> {
     private boolean success;
     private int code;
     private String message;
@@ -16,5 +15,24 @@ public class ApiResponse <T> {
         this.success = success;
         this.code = code;
         this.message = message;
+    }
+
+    public ApiResponse(boolean success, int code, String message, T data) {
+        this.success = success;
+        this.code = code;
+        this.message = message;
+        this.data = data;
+    }
+
+    public static <T> ApiResponse<T> success(String message, T data) {
+        return new ApiResponse<>(true, 200, message, data);
+    }
+
+    public static <T> ApiResponse<T> failure(String message, T data) {
+        return new ApiResponse<>(false, 500, message, data);
+    }
+
+    public static <T> ApiResponse<T> success(String message) {
+        return new ApiResponse<>(true, 200, message, null);
     }
 }
