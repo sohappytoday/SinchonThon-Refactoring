@@ -12,10 +12,10 @@ import shinchonton.backend.major.domain.Major;
 public class Mentor extends User {
 
     @Column
-    private String schoolname;
+    private String schoolName;
 
     @Column
-    private String openchaturl;
+    private String openChatUrl;
 
     @Enumerated(EnumType.STRING)
     @Column
@@ -44,23 +44,8 @@ public class Mentor extends User {
                   String description) {
 
         super(null, account, password, nickname);
-
-        // === 필수 값 검증 ===
-        if (schoolname == null || schoolname.isBlank()) {
-            throw new IllegalArgumentException("schoolname is required");
-        }
-        if (openchaturl == null || openchaturl.isBlank()) {
-            throw new IllegalArgumentException("openchaturl is required");
-        }
-        if (majorCategory == null) {
-            throw new IllegalArgumentException("category is required");
-        }
-        if (major == null) {
-            throw new IllegalArgumentException("major is required");
-        }
-
-        this.schoolname = schoolname;
-        this.openchaturl = openchaturl;
+        this.schoolName = schoolname;
+        this.openChatUrl = openchaturl;
         this.majorCategory = majorCategory;
         this.major = major;
         this.description = description;

@@ -6,12 +6,14 @@ import shinchonton.backend.user.domain.Mentee;
 
 @Getter
 @Builder
-public class MenteeProfileResponse {
+public class MenteeCommonProfileResponse {
     private String nickname;
+    private Long age;
 
-    public static MenteeProfileResponse of(Mentee mentee) {
-        return MenteeProfileResponse.builder()
+    public static MenteeCommonProfileResponse of(Mentee mentee) {
+        return MenteeCommonProfileResponse.builder()
                 .nickname(mentee.getNickname())
+                .age(mentee.getAge())
                 .build();
     }
 }

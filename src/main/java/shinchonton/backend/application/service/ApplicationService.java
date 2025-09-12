@@ -57,9 +57,9 @@ public class ApplicationService {
                     if (receiver instanceof Mentor mento) {
                         return MenteeSelectedMentorsResponse.MentoSummary.builder()
                                 .nickname(mento.getNickname())
-                                .schoolname(mento.getSchoolname())
+                                .schoolname(mento.getSchoolName())
                                 .major(mento.getMajor() != null ? mento.getMajor().getName() : null)
-                                .openchaturl(mento.getOpenchaturl())
+                                .openchaturl(mento.getOpenChatUrl())
                                 .description(mento.getDescription())
                                 .build();
                     }

@@ -17,7 +17,7 @@ import shinchonton.backend.user.repository.UserRepository;
 @Service
 @RequiredArgsConstructor
 @Transactional
-public class UserService {
+public class SignUpService {
 
     private final UserRepository userRepository;
     private final MajorRepository majorRepository;
