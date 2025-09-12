@@ -8,6 +8,7 @@ import java.util.List;
 @Getter
 @Builder
 public class MenteeSelectedMentorsResponse {
+
     private List<MentoSummary> mentors;
 
     @Getter

@@ -7,6 +7,9 @@ import shinchonton.backend.user.domain.Mentor;
 @Getter
 @Builder
 public class MentorCommonProfileResponse {
+    /**
+     * Mentor의 기본 정보들만 담은 Profile 내용입니다.
+     */
     private String nickname;
     private String schoolName;
     private MajorCategory majorCategory;

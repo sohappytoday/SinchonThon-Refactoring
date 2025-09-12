@@ -7,6 +7,9 @@ import shinchonton.backend.user.domain.Mentee;
 @Getter
 @Builder
 public class MenteeCommonProfileResponse {
+    /**
+     * Mentee의 기본 정보만 담겨 있는 ProfileResponse 입니다.
+     */
     private String nickname;
     private Long age;
 
