@@ -2,7 +2,7 @@ package shinchonton.backend.user.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
-import shinchonton.backend.major.domain.Major;
+import shinchonton.backend.department.domain.Department;
 
 @Entity
 @DiscriminatorValue("MENTOR") // dtype = 'MENTOR'
@@ -19,11 +19,11 @@ public class Mentor extends User {
 
     @Enumerated(EnumType.STRING)
     @Column
-    private MajorCategory majorCategory;
+    private DepartmentCategory departmentCategory;
 
     @ManyToOne
     @JoinColumn(name = "major_id", nullable = true)
-    private Major major;
+    private Department department;
 
     @Column
     private String description;
@@ -39,15 +39,15 @@ public class Mentor extends User {
                   String nickname,
                   String schoolname,
                   String openchaturl,
-                  MajorCategory majorCategory,
-                  Major major,
+                  DepartmentCategory departmentCategory,
+                  Department department,
                   String description) {
 
         super(null, account, password, nickname);
         this.schoolName = schoolname;
         this.openChatUrl = openchaturl;
-        this.majorCategory = majorCategory;
-        this.major = major;
+        this.departmentCategory = departmentCategory;
+        this.department = department;
         this.description = description;
     }
 }

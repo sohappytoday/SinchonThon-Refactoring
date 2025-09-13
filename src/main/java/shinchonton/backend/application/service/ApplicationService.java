@@ -58,7 +58,7 @@ public class ApplicationService {
                         return MenteeSelectedMentorsResponse.MentoSummary.builder()
                                 .nickname(mento.getNickname())
                                 .schoolname(mento.getSchoolName())
-                                .major(mento.getMajor() != null ? mento.getMajor().getName() : null)
+                                .major(mento.getDepartment() != null ? mento.getDepartment().getName() : null)
                                 .openchaturl(mento.getOpenChatUrl())
                                 .description(mento.getDescription())
                                 .build();

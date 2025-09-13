@@ -8,7 +8,7 @@ import shinchonton.backend.answer.domain.UserAnswer;
 import shinchonton.backend.answer.dto.response.AnswerResponse;
 import shinchonton.backend.answer.repository.AnswerRepository;
 import shinchonton.backend.answer.repository.UserAnswerRepository;
-import shinchonton.backend.major.dto.MajorResponse;
+import shinchonton.backend.department.dto.DepartmentResponse;
 import shinchonton.backend.user.domain.User;
 import shinchonton.backend.user.repository.UserRepository;
 
@@ -95,7 +95,7 @@ public class AnswerService {
     }
 
     @Transactional
-    public List<MajorResponse> saveFourthAnswerAndGetMajors(Long userId, Long answerId) {
+    public List<DepartmentResponse> saveFourthAnswerAndGetDepartments(Long userId, Long answerId) {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 유저"));
 
@@ -111,8 +111,8 @@ public class AnswerService {
         userAnswerRepository.save(userAnswer);
 
         // Answer 기준으로 Major 리스트 조회
-        return answer.getMajors().stream()
-                .map(m -> new MajorResponse(m.getName(), m.getContent()))
+        return answer.getDepartments().stream()
+                .map(m -> new DepartmentResponse(m.getName(), m.getContent()))
                 .toList();
     }
 

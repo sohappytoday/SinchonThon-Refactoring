@@ -16,7 +16,7 @@ public class MenteeSelectedMentorsResponse {
     public static class MentoSummary {
         private String nickname;
         private String schoolname;
-        private String major;
+        private String department;
         private String openchaturl;
         private String description;
     }

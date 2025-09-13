@@ -1,7 +1,7 @@
 package shinchonton.backend.user.dto.response;
 
 import lombok.*;
-import shinchonton.backend.user.domain.MajorCategory;
+import shinchonton.backend.user.domain.DepartmentCategory;
 import shinchonton.backend.user.domain.Mentor;
 
 @Getter
@@ -12,16 +12,16 @@ public class MentorCommonProfileResponse {
      */
     private String nickname;
     private String schoolName;
-    private MajorCategory majorCategory;
-    private String major;
+    private DepartmentCategory departmentCategory;
+    private String department;
     private String description;
 
     public static MentorCommonProfileResponse of(Mentor mentor) {
         return MentorCommonProfileResponse.builder()
                 .nickname(mentor.getNickname())
                 .schoolName(mentor.getSchoolName())
-                .majorCategory(mentor.getMajorCategory())
-                .major(mentor.getMajor().getName())
+                .departmentCategory(mentor.getDepartmentCategory())
+                .department(mentor.getDepartment().getName())
                 .description(mentor.getDescription())
                 .build();
     }

@@ -16,6 +16,4 @@ public class MeMenteeProfileResponse {
                 .menteeCommonProfileResponse(menteeCommonProfileResponse)
                 .build();
     }
-
-
 }

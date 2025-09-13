@@ -1,11 +1,11 @@
-package shinchonton.backend.major.dto;
+package shinchonton.backend.department.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class MajorResponse {
+public class DepartmentResponse {
     private String name;
     private String content;
 }

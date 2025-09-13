@@ -2,7 +2,7 @@ package shinchonton.backend.answer.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
-import shinchonton.backend.major.domain.Major;
+import shinchonton.backend.department.domain.Department;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,5 +32,5 @@ public class Answer {
     private String answerContent;
 
     @ManyToMany(mappedBy = "answers3")
-    private List<Major> majors = new ArrayList<>();
+    private List<Department> departments = new ArrayList<>();
 }

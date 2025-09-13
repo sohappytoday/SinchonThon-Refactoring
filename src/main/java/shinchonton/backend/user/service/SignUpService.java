@@ -4,12 +4,12 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import shinchonton.backend.major.domain.Major;
-import shinchonton.backend.major.repository.MajorRepository;
+import shinchonton.backend.department.domain.Department;
+import shinchonton.backend.department.repository.DepartmentRepository;
 import shinchonton.backend.user.domain.*;
 import shinchonton.backend.user.dto.request.SignUpRequest;
 import shinchonton.backend.user.exception.AccountAlreadyExist;
-import shinchonton.backend.user.exception.MajorNotFound;
+import shinchonton.backend.user.exception.DepartmentNotFound;
 import shinchonton.backend.user.exception.RequiredValueEmpty;
 import shinchonton.backend.user.exception.UserNotFound;
 import shinchonton.backend.user.repository.UserRepository;
@@ -20,7 +20,7 @@ import shinchonton.backend.user.repository.UserRepository;
 public class SignUpService {
 
     private final UserRepository userRepository;
-    private final MajorRepository majorRepository;
+    private final DepartmentRepository departmentRepository;
     private final PasswordEncoder passwordEncoder;
 
     //userId로 User 정보 조회
@@ -47,7 +47,7 @@ public class SignUpService {
         if (request.getUserType() == UserType.MENTOR) {
             if (nullOrBlank(request.getMentor().getNickname())
                     || nullOrBlank(request.getMentor().getSchoolName())
-                    || nullOrBlank(String.valueOf(request.getMentor().getMajorCategory()))
+                    || nullOrBlank(String.valueOf(request.getMentor().getDepartmentCategory()))
                     || nullOrBlank(request.getMentor().getMajor())
                     || nullOrBlank(request.getMentor().getOpenChatUrl())
                     || nullOrBlank(request.getMentor().getDescription())) {
@@ -55,8 +55,8 @@ public class SignUpService {
             }
 
             //학과 있는지 체크
-            Major major = majorRepository.findByName(request.getMentor().getMajor())
-                    .orElseThrow(MajorNotFound::new);
+            Department department = departmentRepository.findByName(request.getMentor().getMajor())
+                    .orElseThrow(DepartmentNotFound::new);
 
             userRepository.save(Mentor.builder()
                     .account(request.getAccount())
@@ -64,9 +64,9 @@ public class SignUpService {
                     .nickname(request.getMentor().getNickname())
                     .schoolname(request.getMentor().getSchoolName())
                     .openchaturl(request.getMentor().getOpenChatUrl())
-                    .majorCategory(request.getMentor().getMajorCategory())
+                    .majorCategory(request.getMentor().getDepartmentCategory())
                     .description(request.getMentor().getDescription())
-                    .major(major)
+                    .major(department)
                     .build());
         }
 

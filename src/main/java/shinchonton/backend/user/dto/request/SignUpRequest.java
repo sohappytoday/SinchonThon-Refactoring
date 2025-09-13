@@ -4,8 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import shinchonton.backend.major.domain.Major;
-import shinchonton.backend.user.domain.MajorCategory;
+import shinchonton.backend.user.domain.DepartmentCategory;
 import shinchonton.backend.user.domain.UserType;
 
 @Getter
@@ -26,8 +25,8 @@ public class SignUpRequest {
     public static class MentorInfo {
         private String nickname;
         private String schoolName;
-        private MajorCategory majorCategory; //문과/이과/예체능
-        private String major;                //학과
+        private DepartmentCategory departmentCategory; //문과/이과/예체능
+        private String department;                //학과
         private String description;
         private String openChatUrl;
     }

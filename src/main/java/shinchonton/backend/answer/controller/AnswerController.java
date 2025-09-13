@@ -3,11 +3,10 @@ package shinchonton.backend.answer.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import shinchonton.backend.answer.domain.Answer;
 import shinchonton.backend.answer.dto.request.AnswerRequest;
 import shinchonton.backend.answer.dto.response.AnswerResponse;
 import shinchonton.backend.answer.service.AnswerService;
-import shinchonton.backend.major.dto.MajorResponse;
+import shinchonton.backend.department.dto.DepartmentResponse;
 import shinchonton.backend.token.jwt.TokenAuthenticationFilter;
 
 import java.util.List;
@@ -53,11 +52,11 @@ public class AnswerController {
     }
 
     @PostMapping("/4")
-    public ResponseEntity<List<MajorResponse>> saveFourthAnswerAndGetMajors(
+    public ResponseEntity<List<DepartmentResponse>> saveFourthAnswerAndGetDepartmets(
             @RequestAttribute(name = TokenAuthenticationFilter.ATTR_USER_ID) Long userId,
             @RequestBody AnswerRequest request
     ) {
-        List<MajorResponse> majors = answerService.saveFourthAnswerAndGetMajors(userId, request.getAnswerId());
+        List<DepartmentResponse> majors = answerService.saveFourthAnswerAndGetDepartments(userId, request.getAnswerId());
         return ResponseEntity.ok(majors);
     }
 

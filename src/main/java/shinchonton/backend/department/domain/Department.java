@@ -1,21 +1,21 @@
-package shinchonton.backend.major.domain;
+package shinchonton.backend.department.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
-import shinchonton.backend.user.domain.MajorCategory;
+import shinchonton.backend.user.domain.DepartmentCategory;
 import shinchonton.backend.answer.domain.Answer;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "major")
+@Table(name = "department")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Major {
+public class Department {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,7 +29,7 @@ public class Major {
 
     @Enumerated(EnumType.STRING)  // Category enum을 문자열로 저장
     @Column(nullable = false)
-    private MajorCategory majorCategory;   // 계열 (문과/이과/예체능)
+    private DepartmentCategory departmentCategory;   // 계열 (문과/이과/예체능)
 
     // Many-to-Many 관계 설정
     @ManyToMany
