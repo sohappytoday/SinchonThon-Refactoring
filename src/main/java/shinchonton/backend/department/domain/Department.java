@@ -11,10 +11,7 @@ import java.util.List;
 @Entity
 @Table(name = "department")
 @Getter
-@Setter
 @NoArgsConstructor
-@AllArgsConstructor
-@Builder
 public class Department {
 
     @Id
@@ -22,21 +19,13 @@ public class Department {
     private Long id;
 
     @Column(nullable = false)
-    private String name;   // 학과명 (예: 컴퓨터공학과, 국어국문학과)
+    private String name;   // 학과명
 
     @Column
-    private String content;
+    private String content; // 학과 소개글
 
-    @Enumerated(EnumType.STRING)  // Category enum을 문자열로 저장
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private DepartmentCategory departmentCategory;   // 계열 (문과/이과/예체능)
 
-    // Many-to-Many 관계 설정
-    @ManyToMany
-    @JoinTable(
-            name = "major_answer3",
-            joinColumns = @JoinColumn(name = "major_id"),
-            inverseJoinColumns = @JoinColumn(name = "answer3_id")
-    )
-    private List<Answer> answers3 = new ArrayList<>();
 }

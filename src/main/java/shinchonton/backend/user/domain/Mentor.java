@@ -43,7 +43,7 @@ public class Mentor extends User {
                   Department department,
                   String description) {
 
-        super(null, account, password, nickname);
+        super(null,account, password, nickname);
         this.schoolName = schoolname;
         this.openChatUrl = openchaturl;
         this.departmentCategory = departmentCategory;
