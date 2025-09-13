@@ -2,35 +2,26 @@ package shinchonton.backend.answer.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
-import shinchonton.backend.department.domain.Department;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name = "answer")
-@Data
+@Getter
 @NoArgsConstructor
-@AllArgsConstructor
-@Builder
 public class Answer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long answerId;
 
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "prev_id") // FK 컬럼명
+    private Answer prevAnswer;
 
-    @Column
-    private Long prev1Id;
+    private Answer(Answer answer){
+        this.prevAnswer = answer;
+    }
 
-    @Column
-    private Long prev2Id;
+    public static Answer createAnswer(Answer answer){
+        return new Answer(answer);
+    }
 
-    @Column
-    private Long prev3Id;
-
-    @Column
-    private String answerContent;
-
-    @ManyToMany(mappedBy = "answers3")
-    private List<Department> departments = new ArrayList<>();
 }

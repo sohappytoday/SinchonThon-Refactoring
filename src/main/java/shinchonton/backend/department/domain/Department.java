@@ -21,7 +21,7 @@ public class Department {
     @Column(nullable = false)
     private String name;   // 학과명
 
-    @Column
+    @Column(nullable = false)
     private String content; // 학과 소개글
 
     @Enumerated(EnumType.STRING)
