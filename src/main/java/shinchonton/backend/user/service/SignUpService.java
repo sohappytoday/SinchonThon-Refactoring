@@ -48,14 +48,14 @@ public class SignUpService {
             if (nullOrBlank(request.getMentor().getNickname())
                     || nullOrBlank(request.getMentor().getSchoolName())
                     || nullOrBlank(String.valueOf(request.getMentor().getDepartmentCategory()))
-                    || nullOrBlank(request.getMentor().getMajor())
+                    || nullOrBlank(request.getMentor().getDepartment())
                     || nullOrBlank(request.getMentor().getOpenChatUrl())
                     || nullOrBlank(request.getMentor().getDescription())) {
                 throw new RequiredValueEmpty();
             }
 
             //학과 있는지 체크
-            Department department = departmentRepository.findByName(request.getMentor().getMajor())
+            Department department = departmentRepository.findByName(request.getMentor().getDepartment())
                     .orElseThrow(DepartmentNotFound::new);
 
             userRepository.save(Mentor.builder()
@@ -64,9 +64,9 @@ public class SignUpService {
                     .nickname(request.getMentor().getNickname())
                     .schoolname(request.getMentor().getSchoolName())
                     .openchaturl(request.getMentor().getOpenChatUrl())
-                    .majorCategory(request.getMentor().getDepartmentCategory())
+                    .departmentCategory(request.getMentor().getDepartmentCategory())
                     .description(request.getMentor().getDescription())
-                    .major(department)
+                    .department(department)
                     .build());
         }
 
