@@ -24,7 +24,6 @@ public class AnswerService {
                 .toList();
     }
 
-
     //다음 답변 리스트 보여주기
     public List<AnswerResponse> showNextAnswerList(Long answerId) {
         Answer answer = answerRepository.findById(answerId).orElseThrow(InvalidAnswerId::new);

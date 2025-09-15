@@ -29,7 +29,7 @@ public class ProfileService {
         //멘토일 때 MentorProfileResponse 반환
         if(userType == UserType.MENTOR) {
             Mentor mentor = mentorRepository.findByUserId(userId).orElseThrow(UserNotFound::new);
-            MentorCommonProfileResponse mentorCommonProfileResponse = MentorCommonProfileResponse.of(mentor);
+            MentorCommonProfileResponse mentorCommonProfileResponse = MentorCommonProfileResponse.from(mentor);
             return MeMentorProfileResponse.of(mentorCommonProfileResponse);
         }
         else{

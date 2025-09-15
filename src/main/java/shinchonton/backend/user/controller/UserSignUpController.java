@@ -11,7 +11,7 @@ import shinchonton.backend.user.service.SignUpService;
 @RestController
 @RequestMapping("/signup")
 @RequiredArgsConstructor
-public class UserController {
+public class UserSignUpController {
 
     private final SignUpService signUpService;
 

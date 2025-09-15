@@ -10,7 +10,10 @@ import shinchonton.backend.department.domain.Department;
 import shinchonton.backend.department.dto.DepartmentResponse;
 import shinchonton.backend.department.repository.AnswerDepartmentRepository;
 import shinchonton.backend.department.repository.DepartmentRepository;
+import shinchonton.backend.user.domain.Mentor;
+import shinchonton.backend.user.dto.response.MentorCommonProfileResponse;
 import shinchonton.backend.user.exception.DepartmentNotFound;
+import shinchonton.backend.user.repository.MentorRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +25,7 @@ public class DepartmentService {
     private final AnswerRepository answerRepository;
     private final AnswerDepartmentRepository answerDepartmentRepository;
     private final DepartmentRepository departmentRepository;
+    private final MentorRepository mentorRepository;
 
     public List<DepartmentResponse> showDepartmentListByAnswerId(Long answerId) {
         //답변 찾고
@@ -40,5 +44,14 @@ public class DepartmentService {
             responseList.add(departmentResponse);
         }
         return responseList;
+    }
+
+    public List<MentorCommonProfileResponse> showMentorListByDepartmentId(Long departmentId){
+        List<Mentor> mentorList = mentorRepository.findAllByDepartmentId(departmentId);
+
+        return mentorList.stream()
+                .map(MentorCommonProfileResponse::from)
+                .toList();
+
     }
 }
