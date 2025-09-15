@@ -1,4 +1,4 @@
-package shinchonton.backend.answer.domain;
+package shinchonton.backend.department.domain;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -9,7 +9,7 @@ import shinchonton.backend.user.domain.User;
 @Table(name = "user_selected_answer")
 @Getter
 @NoArgsConstructor
-public class UserSelectedAnswer {
+public class UserSelectedDepartment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -21,15 +21,15 @@ public class UserSelectedAnswer {
 
     // Answer FK
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "answer_id")
-    private Answer answer;
+    @JoinColumn(name = "department_id")
+    private Department department;
 
-    private UserSelectedAnswer(User user, Answer answer) {
+    private UserSelectedDepartment(User user, Department department) {
         this.user = user;
-        this.answer = answer;
+        this.department = department;
     }
 
-    public static UserSelectedAnswer userSelected(User user, Answer answer){
-        return new UserSelectedAnswer(user, answer);
+    public static UserSelectedDepartment userSelected(User user, Department department){
+        return new UserSelectedDepartment(user, department);
     }
 }

@@ -6,5 +6,5 @@ import shinchonton.backend.department.domain.Department;
 import java.util.Optional;
 
 public interface DepartmentRepository extends JpaRepository<Department, Long> {
-    Optional<Department> findByName(String name);
+    Optional <Department> findByName(String name);
 }

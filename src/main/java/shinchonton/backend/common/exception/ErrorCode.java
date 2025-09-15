@@ -16,7 +16,6 @@ public enum ErrorCode {
     INVALID_USER_TYPE("404",404, "유저 타입이 정확하지 않습니다."),
     DO_NOT_HAVE_PERMISSION("403",403, "권한이 없습니다."),
     INVALID_ANSWER_ID("404", 404, "답변 Id가 존재하지 않습니다.");
-
     private final String code;
     private final int status;
     private final String message;

@@ -13,6 +13,6 @@ public interface AnswerRepository extends JpaRepository<Answer, Long> {
     //Answer 존재 여부
     boolean existsById(Long id);
 
-    //prev_Id로 Answer List 찾기
-    List<Answer> findAllByPrevAnswerId(Long prevAnswerId);
+    //첫번째 Answer List 찾기
+    List<Answer> findAllByPrevAnswerIsNull();
 }
