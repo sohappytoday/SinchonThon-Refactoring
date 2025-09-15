@@ -1,15 +1,20 @@
 package shinchonton.backend.answer.dto.response;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.*;
+import shinchonton.backend.answer.domain.Answer;
 
-@Data
+@Getter
 @AllArgsConstructor
+@Builder
 public class AnswerResponse {
     private Long answerId;
     private String answerContent;
 
-    public static AnswerResponse fromEntity(shinchonton.backend.answer.domain.Answer answer) {
-        return new AnswerResponse(answer.getAnswerId(), answer.getAnswerContent());
+    public static AnswerResponse from(Answer answer) {
+        return AnswerResponse.builder()
+                .answerId(answer.getId())
+                .answerContent(answer.getContent())
+                .build();
     }
 }
