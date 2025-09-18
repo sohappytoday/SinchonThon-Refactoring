@@ -28,4 +28,11 @@ public class Department {
     @Column(nullable = false)
     private DepartmentCategory departmentCategory;   // 계열 (문과/이과/예체능)
 
+    public static Department create(String name, String content, DepartmentCategory departmentCategory) {
+        Department department = new Department();
+        department.name = name;
+        department.content = content;
+        department.departmentCategory = departmentCategory;
+        return department;
+    }
 }

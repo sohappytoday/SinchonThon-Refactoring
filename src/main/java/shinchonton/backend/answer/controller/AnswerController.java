@@ -23,7 +23,7 @@ public class AnswerController {
 
     //첫 번째 질문 보여주기
     @GetMapping
-    public ResponseEntity<ApiResponse<List<AnswerResponse>>> showNextAnswerList() {
+    public ResponseEntity<ApiResponse<List<AnswerResponse>>> showFirstAnswerList() {
         List<AnswerResponse> answerResponseList = answerService.showFirstAnswerList();
 
         return ResponseEntity.ok(ApiResponse.success("다음 답변 리스트 보기 성공", answerResponseList));

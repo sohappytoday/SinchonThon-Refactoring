@@ -37,8 +37,12 @@ public class SecurityConfig {
 
                 // 인증/인가 규칙
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers(HttpMethod.POST, "/login").permitAll()   // 로그인은 누구나 가능
-                        .requestMatchers(HttpMethod.POST, "/logout").authenticated() // 로그아웃은 인증 필요
+
+                        // 로그인/로그아웃
+                        .requestMatchers(HttpMethod.POST, "/login").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/logout").authenticated()
+
+                        // 나머지 요청들
                         .anyRequest().permitAll()
                 )
 
@@ -56,6 +60,7 @@ public class SecurityConfig {
 
         return http.build();
     }
+
 
     @Bean
     public PasswordEncoder passwordEncoder() {
