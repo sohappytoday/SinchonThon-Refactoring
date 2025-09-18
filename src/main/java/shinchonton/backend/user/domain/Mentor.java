@@ -34,7 +34,7 @@ public class Mentor extends User {
     }
 
     @Builder
-    public Mentor(String account,
+    private Mentor(String account,
                   String password,
                   String nickname,
                   String schoolname,
@@ -50,4 +50,5 @@ public class Mentor extends User {
         this.department = department;
         this.description = description;
     }
+
 }

@@ -13,6 +13,8 @@ import shinchonton.backend.user.domain.Mentor;
 import shinchonton.backend.user.domain.UserType;
 import shinchonton.backend.user.dto.response.MeMentorProfileResponse;
 import shinchonton.backend.user.dto.response.MeMenteeProfileResponse;
+import shinchonton.backend.user.dto.response.MyMenteeResponse;
+import shinchonton.backend.user.dto.response.MyMentorResponse;
 import shinchonton.backend.user.service.ProfileService;
 
 import java.util.List;
@@ -48,10 +50,24 @@ public class UserProfileController {
 
     //내가 신청한 멘토 리스트 보기
     @GetMapping("/myMentorList")
-    public ResponseEntity<ApiResponse<List<Mentor>>> getMyMentorApplicationsList(
-            @RequestAttribute(name = TokenAuthenticationFilter.ATTR_USER_ID)Long userId){
+    public ResponseEntity<ApiResponse<List<MyMentorResponse>>> getMyMentorApplicationsList(
+            @RequestAttribute(name = TokenAuthenticationFilter.ATTR_USER_ID)Long userId,
+            @RequestAttribute(name = TokenAuthenticationFilter.ATTR_USER_TYPE)String userTypeString){
 
+        UserType userType = UserType.valueOf(userTypeString.toUpperCase());
+        List<MyMentorResponse> myMentorList = profileService.getMyMentorList(userId,userType);
 
+        return ResponseEntity.ok(ApiResponse.success("내 멘토리스트 보기 성공", myMentorList));
     }
     //나에게 신청한 멘티 리스트 보기
+    @GetMapping("/myMenteeList")
+    public ResponseEntity<ApiResponse<List<MyMenteeResponse>>> getMyMenteeApplicationsList(
+            @RequestAttribute(name = TokenAuthenticationFilter.ATTR_USER_ID)Long userId,
+            @RequestAttribute(name = TokenAuthenticationFilter.ATTR_USER_TYPE)String userTypeString){
+
+        UserType userType = UserType.valueOf(userTypeString.toUpperCase());
+        List<MyMenteeResponse> myMenteeList = profileService.getMyMenteeList(userId,userType);
+
+        return ResponseEntity.ok(ApiResponse.success("내 멘티리스트 보기 성공", myMenteeList));
+    }
 }
