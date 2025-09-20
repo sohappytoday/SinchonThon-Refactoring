@@ -15,12 +15,6 @@ public class GlobalExceptionHandler {
         return buildErrorResponse(HttpStatus.valueOf(code.getStatus()), code.getMessage());
     }
 
-    // ===== 그 외 Exception 처리 =====
-    @org.springframework.web.bind.annotation.ExceptionHandler(Exception.class)
-    public ResponseEntity<ApiResponse<?>> handleException(Exception ex) {
-        return buildErrorResponse(HttpStatus.INTERNAL_SERVER_ERROR, "서버 내부 오류가 발생했습니다.");
-    }
-
     // ===== Response Builder =====
     private ResponseEntity<ApiResponse<?>> buildErrorResponse(HttpStatus status, String message) {
         ApiResponse<?> response = new ApiResponse<>(false, status.value(), message, null);

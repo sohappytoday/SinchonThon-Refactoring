@@ -4,16 +4,16 @@ spring:
   profiles:
     active: local
   datasource:
-    url: jdbc:mysql://localhost:3306/careerBTI # DB ??
+    url: jdbc:mysql://localhost:3306/careerBTI
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
     hikari:
-      read-only: false # ??? ?? ??
+      read-only: false
 
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: create
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL8Dialect

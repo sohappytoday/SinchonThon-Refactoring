@@ -8,6 +8,7 @@ import shinchonton.backend.department.domain.Department;
 import shinchonton.backend.department.repository.DepartmentRepository;
 import shinchonton.backend.user.domain.*;
 import shinchonton.backend.user.dto.request.SignUpRequest;
+import shinchonton.backend.user.dto.response.SignUpResponse;
 import shinchonton.backend.user.exception.AccountAlreadyExist;
 import shinchonton.backend.user.exception.DepartmentNotFound;
 import shinchonton.backend.user.exception.RequiredValueEmpty;
@@ -29,7 +30,7 @@ public class SignUpService {
     }
 
     //회원가입
-    public void signup(SignUpRequest request) {
+    public SignUpResponse signup(SignUpRequest request) {
         // 계정 중복 체크
         if (userRepository.existsByAccount(request.getAccount())) {
             throw new AccountAlreadyExist();
@@ -54,11 +55,11 @@ public class SignUpService {
                 throw new RequiredValueEmpty();
             }
 
-            //학과 있는지 체크
+            // 학과 있는지 체크
             Department department = departmentRepository.findByName(request.getMentor().getDepartment())
                     .orElseThrow(DepartmentNotFound::new);
 
-            userRepository.save(Mentor.builder()
+            Mentor mentor = userRepository.save(Mentor.builder()
                     .account(request.getAccount())
                     .password(passwordEncoder.encode(request.getPassword()))
                     .nickname(request.getMentor().getNickname())
@@ -68,6 +69,8 @@ public class SignUpService {
                     .description(request.getMentor().getDescription())
                     .department(department)
                     .build());
+
+            return SignUpResponse.from(mentor);
         }
 
         // 멘티 가입
@@ -76,12 +79,14 @@ public class SignUpService {
                 throw new RequiredValueEmpty();
             }
 
-            userRepository.save(Mentee.builder()
+            Mentee mentee = userRepository.save(Mentee.builder()
                     .account(request.getAccount())
                     .password(passwordEncoder.encode(request.getPassword()))
                     .nickname(request.getMentee().getNickname())
                     .age(request.getMentee().getAge())
                     .build());
+
+            return SignUpResponse.from(mentee);
         }
 
         // userType 잘못 들어온 경우

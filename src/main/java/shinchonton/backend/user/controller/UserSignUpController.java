@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import shinchonton.backend.common.dto.response.ApiResponse;
 import shinchonton.backend.user.dto.request.SignUpRequest;
+import shinchonton.backend.user.dto.response.SignUpResponse;
 import shinchonton.backend.user.service.SignUpService;
 
 
@@ -16,9 +17,9 @@ public class UserSignUpController {
     private final SignUpService signUpService;
 
     @PostMapping
-    public ResponseEntity<ApiResponse<String>> signup(@RequestBody SignUpRequest request) {
-        signUpService.signup(request);
+    public ResponseEntity<ApiResponse<SignUpResponse>> signup(@RequestBody SignUpRequest request) {
+        SignUpResponse signUpResponse = signUpService.signup(request);
 
-        return ResponseEntity.ok(ApiResponse.success("회원가입 성공", null));
+        return ResponseEntity.ok(ApiResponse.success("회원가입 성공", signUpResponse));
     }
 }
