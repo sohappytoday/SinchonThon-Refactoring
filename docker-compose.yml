@@ -1,0 +1,46 @@
+version: '3.8'      #compose 파일 포맷 버전
+
+services:                             #실행할 컨테이너(서비스) 묶음
+  api-server:                         #백엔드 앱 서비스 이름 (컨테이너끼리 통신할 때)
+    build: .                          #현재 디렉토리의 Dockerfile로 이미지 빌드
+    container_name: sinchonthon-api   #컨테이너 명(Docker CLI에서 식별)
+    ports:
+      - "8080:8080"                   #호스트:컨테이너 포트 매핑
+                                      #만약 8081:8080이면 외부에서 8081포트로 호출 시, 컨테이너 내부에서 8080포트로 연결
+    depends_on:
+      mysql-db:                       #mysql-db가 먼저 올라오도록 의존성 선언(순서만 보장되고 헬스체크 x)
+        condition: service_healthy    #MYSQL이 "ready" 상태인지 체크
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-db:3306/careerBTI
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: ge19ok03im
+      JWT_ISSUER: shinchonton
+      JWT_SECRET_KEY: TXlVbHRyYVN0cm9uZ0pXVFNlY3JldEtleVRoYXRJc092ZXIzMkJ5dGVzISE=
+    networks:
+      - sinchonthon-network
+
+  mysql-db:                           #MYSQL 서비스 이름, 앱에서 mysql-db로 접근
+    image: mysql:8.0                  #공식 MYSQL 이미지 사용
+    container_name: sinchonthon-mysql #컨테이너 명
+    restart: always                   #도커 재시작 시 자동 기동
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: ge19ok03im
+      MYSQL_DATABASE: careerBTI      #db 스키마 이름
+      TZ: Asia/Seoul                 #컨테이너 타임(로그 시간 맞추기)
+    volumes:
+      - db_data:/var/lib/mysql       #db 데이터 영속화(컨테이너 재생성해도 데이터 유지)
+    networks:
+      - sinchonthon-network
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+networks:
+  sinchonthon-network:
+
+volumes:
+  db_data:                          # MySQL 데이터 보관용 도커 볼륨 (호스트에 저장)

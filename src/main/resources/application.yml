@@ -1,13 +1,12 @@
 spring:
   application:
-    name: backend-project
-  profiles:
-    active: local
+    name: sinchonthon-backend
+
   datasource:
-    url: jdbc:mysql://localhost:3306/careerBTI
+    url: ${SPRING_DATASOURCE_URL}
     driver-class-name: com.mysql.cj.jdbc.Driver
-    username: ${DB_USERNAME}
-    password: ${DB_PASSWORD}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
     hikari:
       read-only: false
 
@@ -19,10 +18,6 @@ spring:
         dialect: org.hibernate.dialect.MySQL8Dialect
         format_sql: true
         show_sql: true
-    open-in-view: true
-
-data:
-  init: true
 
 jwt:
   issuer: ${JWT_ISSUER}
